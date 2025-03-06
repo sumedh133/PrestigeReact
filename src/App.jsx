@@ -6,6 +6,7 @@ import { Home } from './sections/Home'
 import { Overview } from './sections/overview'
 import Pricing from './sections/pricing'
 import { MasterPlan } from './sections/Masterplan'
+import { Location } from './sections/Location'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Overview />
       <Pricing />
       <MasterPlan />
+      <Location />
       <Amenities />
     </div>
   )
