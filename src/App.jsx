@@ -8,6 +8,7 @@ import Pricing from './sections/pricing'
 import { MasterPlan } from './sections/Masterplan'
 import { Location } from './sections/Location'
 import { Gallery } from './sections/Gallery'
+import Footer from './components/footer/Footer'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Location />
       <Amenities />
       <Gallery />
+      <Footer />
     </div>
   )
 }
