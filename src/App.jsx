@@ -5,6 +5,7 @@ import { Features } from './sections/Features'
 import { Home } from './sections/Home'
 import { Overview } from './sections/overview'
 import Pricing from './sections/pricing'
+import { MasterPlan } from './sections/Masterplan'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Features />
       <Overview />
       <Pricing />
+      <MasterPlan />
       <Amenities />
     </div>
   )
