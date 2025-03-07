@@ -1,28 +1,21 @@
-import React from 'react'
-import Navbar from './components/navbar/Navbar'
-import Amenities from './sections/amenities'
-import { Features } from './sections/Features'
-import { Home } from './sections/Home'
-import { Overview } from './sections/overview'
-import Pricing from './sections/pricing'
-import { MasterPlan } from './sections/Masterplan'
-import { Location } from './sections/Location'
-import { Gallery } from './sections/Gallery'
-import Footer from './components/footer/Footer'
+import React from "react"
+import PageRoute from "./PageRoute"
+// import ReactGA from 'react-ga4'
+
+// const trackingId = import.meta.env.VITE_GA_MEASUREMENT_ID;
+
+// ReactGA.initialize(trackingId);
+// ReactGA.send({ hitType: "pageview", page: "/", title: "Users Landed" });
+// ReactGA.send({ hitType: "pageview", page: "/amenities", title: "Users Landed" });
+// ReactGA.send({ hitType: "pageview", page: "/contact", title: "Users Landed" });
+// ReactGA.send({ hitType: "pageview", page: "/locationlocation", title: "Users Landed" });
+// ReactGA.send({ hitType: "pageview", page: "/locationperks", title: "Users Landed" });
+// ReactGA.send({ hitType: "pageview", page: "/pricing", title: "Users Landed" });
 
 function App() {
   return (
-    <div>
-      <Navbar />
-      <Home />
-      <Features />
-      <Overview />
-      <Pricing />
-      <MasterPlan />
-      <Location />
-      <Amenities />
-      <Gallery />
-      <Footer />
+    <div className="font-body md:text-xl bg-white">
+       <PageRoute />
     </div>
   )
 }
