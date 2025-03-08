@@ -2,22 +2,18 @@ import React, { useState, useEffect } from "react";
 import Button from "../components/button/buttonMain";
 import bhk1 from '../assets/floor-plans/bhk1.jpg';
 import bhk2 from '../assets/floor-plans/bhk2.jpg';
-import bhk3 from '../assets/pricing/bhk3.png';
 import bhk4 from '../assets/floor-plans/bhk3.jpg';
 
 const Pricing = ({ setContactModal, contactmodal, formSubmitted }) => {
   const [activeTab, setActiveTab] = useState(0);
   const [isUnlocked, setIsUnlocked] = useState(false);
 
-
-  // Unlock pricing when form is submitted
   useEffect(() => {
     if (formSubmitted) {
       setIsUnlocked(true);
     }
-  }, [formSubmitted]);
+  }, [formSubmitted]);  
 
-  // Handles switching between floor plans
   const handleFloorPlan = (index) => {
     setActiveTab(index);
   };

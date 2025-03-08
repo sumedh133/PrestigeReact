@@ -4,12 +4,11 @@ import logo from "../../assets/navbar/prestige-group-logo.svg";
 import arrow from "/icons/arrow-right.svg";
 
 function Banner({ setContactModal, contactmodal, onClose }) {
-  const [isBannerVisible, setIsBannerVisible] = useState(true);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768); // Adjust this width as per your definition of "mobile"
+      setIsMobile(window.innerWidth <= 768); 
     };
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -65,12 +64,12 @@ function Navbar({ setContactModal, contactmodal }) {
         />
       )}
       <div className="max-w-8xl mx-auto px-5 lg:px-0 flex flex-wrap items-center justify-between py-[8px] z-40 ">
-        {/* Logo */}
+
         <a href="/" className="flex items-center px-4 md:p-0 space-x-3 rtl:space-x-reverse">
           <img src={logo} className="h-10 md:h-10" alt="Prestige Southern Star" />
         </a>
 
-        {/* Mobile Menu Toggle Button */}
+
         <div className="lg:hidden flex items-center">
           <button
             type="button"
@@ -85,7 +84,7 @@ function Navbar({ setContactModal, contactmodal }) {
           </button>
         </div>
 
-        {/* Navigation Links */}
+
         <div
           className={`items-center md:flex ${isMobileNavOpen ? "min-h-screen backdrop-blur-md w-full mt-8" : "hidden md:flex"}`}
           onClick={() => setIsMobileNavOpen(false)}
@@ -104,7 +103,6 @@ function Navbar({ setContactModal, contactmodal }) {
           </ul>
         </div>
 
-        {/* Call Button */}
         <div className="hidden lg:flex items-center">
           <a
             href="tel:+919036958110"

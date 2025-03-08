@@ -56,6 +56,7 @@ const RevealOnScroll = ({ children }) => {
 function PageRoute() {
   const [sitevisitmodal, setSiteVisitModal] = useState(false);
   const [contactmodal, setContactModal] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   return (
     <div>
@@ -70,6 +71,7 @@ function PageRoute() {
           contactmodal={contactmodal}
           setContactModal={setContactModal}
           setSiteVisitModal={setSiteVisitModal}
+          setFormSubmitted={setFormSubmitted}
         />
       )} 
       <Navbar 
@@ -94,6 +96,7 @@ function PageRoute() {
         <Pricing 
           contactmodal={contactmodal}
           setContactModal={setContactModal}
+          formSubmitted={formSubmitted}
         />
       </RevealOnScroll>
       <RevealOnScroll>

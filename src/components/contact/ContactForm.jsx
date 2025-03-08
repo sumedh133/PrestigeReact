@@ -6,7 +6,7 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { isValidPhoneNumber } from "libphonenumber-js";
 
-const ContactForm = ({ contactmodal, setContactModal, setSiteVisitModal }) => {
+const ContactForm = ({ contactmodal, setContactModal, setSiteVisitModal, setFormSubmitted }) => {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
   const [alert, setAlert] = useState(null);
@@ -64,6 +64,7 @@ const ContactForm = ({ contactmodal, setContactModal, setSiteVisitModal }) => {
 
     setTimeout(() => {
       setLoading(false);
+      setFormSubmitted(true);
       setName("");
       setNumber("");
       setAlert(<FormAlert message="We received your info. Expect a response soon!" onClose={() => setAlert(null)} />);
