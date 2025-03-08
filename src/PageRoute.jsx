@@ -12,6 +12,7 @@ import { MasterPlan } from './sections/Masterplan'
 import { Location } from './sections/Location'
 import { Gallery } from './sections/Gallery'
 import Footer from './components/footer/Footer'
+import { WhatsApp } from './components/contact/WhatsApp';
 
 const RevealOnScroll = ({ children }) => {
     const ref = useRef(null);
@@ -54,17 +55,17 @@ function PageRoute() {
   return (
     <div>
       <Navbar />
-      
-      <RevealOnScroll><Home /></RevealOnScroll>
+      <WhatsApp />
+      <RevealOnScroll><Home /></RevealOnScroll>{/*  */}
       <RevealOnScroll><Features /></RevealOnScroll>
-      <RevealOnScroll><Overview /></RevealOnScroll>
-      <RevealOnScroll><Pricing /></RevealOnScroll>
-      <RevealOnScroll><MasterPlan /></RevealOnScroll>
+      <RevealOnScroll><Overview /></RevealOnScroll>{/*  */}
+      <RevealOnScroll><Pricing /></RevealOnScroll>{/*  */}
+      <RevealOnScroll><MasterPlan /></RevealOnScroll>{/*  */}
       <RevealOnScroll><Location /></RevealOnScroll>
       <RevealOnScroll><Amenities /></RevealOnScroll>
       <RevealOnScroll><Gallery /></RevealOnScroll>
 
-      <Footer />
+      <Footer />{/*  */}
     </div>
   )
 }
