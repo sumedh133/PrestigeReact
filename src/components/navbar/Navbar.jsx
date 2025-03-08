@@ -1,16 +1,31 @@
-import React, { useState } from "react";
-import { Phone, Xmark } from "iconoir-react";
+import React, { useState, useEffect } from "react";
+import { Phone, Xmark, MenuScale } from "iconoir-react";
 import logo from "../../assets/navbar/prestige-group-logo.svg";
 import arrow from "/icons/arrow-right.svg";
 
 function Banner({ setContactModal, contactmodal, onClose }) {
+  const [isBannerVisible, setIsBannerVisible] = useState(true);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // Adjust this width as per your definition of "mobile"
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+  
   return (
     <div className="w-screen bg-black text-white text-center p-[10px] flex justify-center items-center gap-[16px] max-h-[40px] z-30 relative">
-      <span className="font-sans font-semibold text-[18px] leading-[17.63px]">
+      <span className={`font-sans font-semibold ${isMobile ? "text-[14px] leading-[14px]" : "text-[18px] leading-[17.63px]"}`}>
         🎉 Exclusive Pre-launch price and offers
       </span>
       <div className="flex items-center justify-center gap-[4px] cursor-pointer">
-        <span className="font-sans font-semibold text-[18px] leading-[17.63px] hover:underline hover:decoration-white" onClick={() => setContactModal(!contactmodal)}>
+        <span className={`font-sans font-semibold ${isMobile ? "text-[14px] leading-[14px]" : "text-[18px] leading-[17.63px]"} hover:underline hover:decoration-white`} onClick={() => setContactModal(!contactmodal)}>
           Get it now
         </span>
         <img src={arrow} alt="" />
@@ -23,7 +38,12 @@ function Banner({ setContactModal, contactmodal, onClose }) {
 }
 
 function Navbar({ setContactModal, contactmodal }) {
-  const [showBanner, setShowBanner] = useState(true); 
+  const [showBanner, setShowBanner] = useState(true);
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+
+  const toggleMobileNav = () => {
+    setIsMobileNavOpen(!isMobileNavOpen);
+  };
 
   const navLinks = [
     { name: "Home", href: "#Home" },
@@ -38,20 +58,38 @@ function Navbar({ setContactModal, contactmodal }) {
   return (
     <div className="font-body fixed w-full z-20 top-0 start-0 bg-PrestigeGrey shadow">
       {showBanner && (
-        <Banner 
-          onClose={() => setShowBanner(false)} 
+        <Banner
+          onClose={() => setShowBanner(false)}
           contactmodal={contactmodal}
           setContactModal={setContactModal}
         />
-        )}
-      <div className="max-w-8xl mx-auto px-5 lg:px-0 flex items-center justify-between w-full py-[8px] z-40">
-        {/* logo */}
+      )}
+      <div className="max-w-8xl mx-auto px-5 lg:px-0 flex flex-wrap items-center justify-between py-[8px] z-40 ">
+        {/* Logo */}
         <a href="/" className="flex items-center px-4 md:p-0 space-x-3 rtl:space-x-reverse">
           <img src={logo} className="h-10 md:h-10" alt="Prestige Southern Star" />
         </a>
 
-        {/* navbar elements */}
-        <div className="items-center md:flex" id="navbar-sticky">
+        {/* Mobile Menu Toggle Button */}
+        <div className="lg:hidden flex items-center">
+          <button
+            type="button"
+            onClick={toggleMobileNav}
+            className="inline-flex items-center w-10 h-10 justify-center text-black hover:bg-skyblue2Color focus:outline-none"
+            aria-expanded={isMobileNavOpen ? "true" : "false"}
+          >
+            <span className="sr-only">
+              {isMobileNavOpen ? "Close main menu" : "Open main menu"}
+            </span>
+            {isMobileNavOpen ? <Xmark className="w-8 h-8" /> : <MenuScale className="w-8 h-8" />}
+          </button>
+        </div>
+
+        {/* Navigation Links */}
+        <div
+          className={`items-center md:flex ${isMobileNavOpen ? "min-h-screen backdrop-blur-md w-full mt-8" : "hidden md:flex"}`}
+          onClick={() => setIsMobileNavOpen(false)}
+        >
           <ul className="flex flex-col p-4 md:p-0 md:flex-row gap-12 w-full justify-between text-PrestigeDarkGrey">
             {navLinks.map((link, index) => (
               <li key={index}>
@@ -66,7 +104,7 @@ function Navbar({ setContactModal, contactmodal }) {
           </ul>
         </div>
 
-        {/* call */}
+        {/* Call Button */}
         <div className="hidden lg:flex items-center">
           <a
             href="tel:+919036958110"
