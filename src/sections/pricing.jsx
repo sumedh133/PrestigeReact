@@ -1,26 +1,26 @@
-import React from "react";
-// import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "../components/button/buttonMain";
 import bhk1 from '../assets/floor-plans/bhk1.jpg';
 import bhk2 from '../assets/floor-plans/bhk2.jpg';
+import bhk3 from '../assets/pricing/bhk3.png';
 import bhk4 from '../assets/floor-plans/bhk3.jpg';
 
-const Pricing = (/*{ setContactModal, contactmodal, formSubmitted }*/) => {
-//   const [activeTab, setActiveTab] = useState(0);
-//   const [isUnlocked, setIsUnlocked] = useState(false);
+const Pricing = ({ setContactModal, contactmodal, formSubmitted }) => {
+  const [activeTab, setActiveTab] = useState(0);
+  const [isUnlocked, setIsUnlocked] = useState(false);
 
 
-//   // Unlock pricing when form is submitted
-//   useEffect(() => {
-//     if (formSubmitted) {
-//       setIsUnlocked(true);
-//     }
-//   }, [formSubmitted]);
+  // Unlock pricing when form is submitted
+  useEffect(() => {
+    if (formSubmitted) {
+      setIsUnlocked(true);
+    }
+  }, [formSubmitted]);
 
-//   // Handles switching between floor plans
-//   const handleFloorPlan = (index) => {
-//     setActiveTab(index);
-//   };
+  // Handles switching between floor plans
+  const handleFloorPlan = (index) => {
+    setActiveTab(index);
+  };
 
   const propertyTypes = [
     { type: "1 BHK", price: "₹ 85 Lakhs ++*", size: "690 Sq.ft.", image: bhk1 },
@@ -43,7 +43,7 @@ const Pricing = (/*{ setContactModal, contactmodal, formSubmitted }*/) => {
             <div
               key={index}
               className="relative p-4 w-fit bg-white cursor-pointer border-2 border-PrestigeDarkGrey"
-            //   onClick={() => handleFloorPlan(index)}
+              onClick={() => handleFloorPlan(index)}
             >
               <img src={property.image} alt={property.type} className="w-100 mb-8" />
 
@@ -54,20 +54,20 @@ const Pricing = (/*{ setContactModal, contactmodal, formSubmitted }*/) => {
               <div className="max-w-md relative text-black">
                 <div className="text-xl pt-4 flex items-center font-normal">
                   <span className="text-lg md:text-xl">&bull;</span>{" "}
-                  <span className={`text-lg md:text-xl `}>
+                  <span className={`text-lg md:text-xl ${!isUnlocked ? "blur-md" : ""}`}>
                     Starting at: {property.price}
                   </span>
                 </div>
                 <div className="text-xl pt-4 flex items-center font-normal">
                   <span className="text-lg md:text-xl">&bull;</span>
-                  <span className={`text-lg md:text-xl`}>
+                  <span className={`text-lg md:text-xl ${!isUnlocked ? "blur-md" : ""}`}>
                     Size: {property.size}
                   </span>
                 </div>
 
                 <Button
                   text="Get Pricing"
-                //   onClick={() => setContactModal(!contactmodal)}
+                  onClick={() => setContactModal(!contactmodal)}
                   className="absolute w-max top-1/2 right-0 transform -translate-y-1/2 px-6 py-3 text-center font-body font-semibold text-sm sm:text-base transition-all duration-300 ease-in-out"
                   showArrow={false}
                 />

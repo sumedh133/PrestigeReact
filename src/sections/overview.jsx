@@ -2,7 +2,7 @@ import React from 'react';
 import image from '../assets/overview/overview.webp';
 import Button from '../components/button/buttonMain';
 
-export const Overview = () => {
+export const Overview = ({ contactmodal, setContactModal }) => {
   return (
     <div className="bg-PrestigeGrey">
       <section
@@ -27,6 +27,7 @@ export const Overview = () => {
           <Button
                 text="Enquire Now!"
                 className=""
+                onClick={() => setContactModal(!contactmodal)}
               />
           
         </div>

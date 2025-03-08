@@ -5,7 +5,7 @@ import Button from "../components/button/buttonMain";
 
 
 
-export const MasterPlan = (/* { setContactModal, contactmodal } */) => {
+export const MasterPlan = ({ setContactModal, contactmodal } ) => {
   return (
     <div
       className="px-6 md:px-[7.5rem] lg:px-64 mx-auto flex flex-col items-center justify-center bg-neutral-300 py-7 md:py-14  gap-10"
@@ -25,7 +25,7 @@ export const MasterPlan = (/* { setContactModal, contactmodal } */) => {
         {}
         <Button
             text="Download Brochure"
-            /* onClick={() => setContactModal(!contactmodal)} */
+            onClick={() => setContactModal(!contactmodal)} 
             className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
             showArrow={false} 
           />

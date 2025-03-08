@@ -3,14 +3,14 @@ import { Phone, Xmark } from "iconoir-react";
 import logo from "../../assets/navbar/prestige-group-logo.svg";
 import arrow from "/icons/arrow-right.svg";
 
-function Banner({ onClose }) {
+function Banner({ setContactModal, contactmodal, onClose }) {
   return (
     <div className="w-screen bg-black text-white text-center p-[10px] flex justify-center items-center gap-[16px] max-h-[40px] z-30 relative">
       <span className="font-sans font-semibold text-[18px] leading-[17.63px]">
         🎉 Exclusive Pre-launch price and offers
       </span>
       <div className="flex items-center justify-center gap-[4px] cursor-pointer">
-        <span className="font-sans font-semibold text-[18px] leading-[17.63px] hover:underline hover:decoration-white">
+        <span className="font-sans font-semibold text-[18px] leading-[17.63px] hover:underline hover:decoration-white" onClick={() => setContactModal(!contactmodal)}>
           Get it now
         </span>
         <img src={arrow} alt="" />
@@ -22,7 +22,7 @@ function Banner({ onClose }) {
   );
 }
 
-function Navbar() {
+function Navbar({ setContactModal, contactmodal }) {
   const [showBanner, setShowBanner] = useState(true); 
 
   const navLinks = [
@@ -37,7 +37,13 @@ function Navbar() {
 
   return (
     <div className="font-body fixed w-full z-20 top-0 start-0 bg-PrestigeGrey shadow">
-      {showBanner && <Banner onClose={() => setShowBanner(false)} />}
+      {showBanner && (
+        <Banner 
+          onClose={() => setShowBanner(false)} 
+          contactmodal={contactmodal}
+          setContactModal={setContactModal}
+        />
+        )}
       <div className="max-w-8xl mx-auto px-5 lg:px-0 flex items-center justify-between w-full py-[8px] z-40">
         {/* logo */}
         <a href="/" className="flex items-center px-4 md:p-0 space-x-3 rtl:space-x-reverse">

@@ -13,6 +13,8 @@ import { Location } from './sections/Location'
 import { Gallery } from './sections/Gallery'
 import Footer from './components/footer/Footer'
 import { WhatsApp } from './components/contact/WhatsApp';
+import SiteVisitForm from './components/contact/SiteVisitForm';
+import ContactForm from './components/contact/ContactForm';
 
 const RevealOnScroll = ({ children }) => {
     const ref = useRef(null);
@@ -52,20 +54,62 @@ const RevealOnScroll = ({ children }) => {
   
 
 function PageRoute() {
+  const [sitevisitmodal, setSiteVisitModal] = useState(false);
+  const [contactmodal, setContactModal] = useState(false);
+
   return (
     <div>
-      <Navbar />
+      {sitevisitmodal && (
+        <SiteVisitForm
+        sitevisitmodal={sitevisitmodal}
+        setSiteVisitModal={setSiteVisitModal}
+        />
+      )}
+      {contactmodal && (
+        <ContactForm
+          contactmodal={contactmodal}
+          setContactModal={setContactModal}
+          setSiteVisitModal={setSiteVisitModal}
+        />
+      )} 
+      <Navbar 
+        contactmodal={contactmodal}
+        setContactModal={setContactModal}
+       /> 
       <WhatsApp />
-      <RevealOnScroll><Home /></RevealOnScroll>{/*  */}
+      <RevealOnScroll>
+        <Home 
+        contactmodal={contactmodal}
+        setContactModal={setContactModal}
+        />
+      </RevealOnScroll>
       <RevealOnScroll><Features /></RevealOnScroll>
-      <RevealOnScroll><Overview /></RevealOnScroll>{/*  */}
-      <RevealOnScroll><Pricing /></RevealOnScroll>{/*  */}
-      <RevealOnScroll><MasterPlan /></RevealOnScroll>{/*  */}
+      <RevealOnScroll>
+        <Overview 
+          contactmodal={contactmodal}
+          setContactModal={setContactModal}
+        />
+      </RevealOnScroll>
+      <RevealOnScroll>
+        <Pricing 
+          contactmodal={contactmodal}
+          setContactModal={setContactModal}
+        />
+      </RevealOnScroll>
+      <RevealOnScroll>
+        <MasterPlan 
+          contactmodal={contactmodal}
+          setContactModal={setContactModal}
+        />  
+      </RevealOnScroll>{/*  */}
       <RevealOnScroll><Location /></RevealOnScroll>
       <RevealOnScroll><Amenities /></RevealOnScroll>
       <RevealOnScroll><Gallery /></RevealOnScroll>
 
-      <Footer />{/*  */}
+      <Footer 
+        contactmodal={contactmodal}
+        setContactModal={setContactModal}
+      />
     </div>
   )
 }

@@ -13,7 +13,7 @@ const useIsMobile = () => {
   return isMobile;
 };
 
-export const Home = () => {
+export const Home = ({ contactmodal, setContactModal }) => {
   const isMobile = useIsMobile();
   
   const containerStyle = {
@@ -77,6 +77,7 @@ export const Home = () => {
 
               <Button
                 text="Enquire Now!"
+                onClick={() => setContactModal(!contactmodal)}
               />
             </div>
           </div>

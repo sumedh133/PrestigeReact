@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '../button/buttonMain';  
 import contactbanner from '../../assets/footer/footer.webp';
 
-export const Footer = (/* { contactmodal, setContactModal } */) => {
+export const Footer = ({ contactmodal, setContactModal }) => {
   
   const opacBackground = {
     backgroundImage: `url(${contactbanner})`,
@@ -30,7 +30,7 @@ export const Footer = (/* { contactmodal, setContactModal } */) => {
               <Button 
                 text="Fill the form" 
                 className="text-center my-2 md:my-6 h-fit md:py-4 md:px-16 py-3 px-8 w-fit scroll-to-top" 
-                /* onClick={() => setContactModal(!contactmodal) }*/
+                onClick={() => setContactModal(!contactmodal) }
                 showArrow={false}
               />
             </div>
